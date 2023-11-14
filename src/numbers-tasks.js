@@ -214,10 +214,11 @@ function roundToPowerOfTen(num, pow) {
  *   17 => true
  */
 function isPrime(n) {
-  if (n <= 1) return false;
+  if (n === 2 || n === 3) return true;
+  if (n <= 1 || n % 2 === 0 || n % 3 === 0) return false;
 
-  for (let i = 2; i <= Math.sqrt(n); i += 1) {
-    if (n % i === 0) return false;
+  for (let i = 5; i <= Math.sqrt(n); i += 6) {
+    if (n % i === 0 || n % (i + 2) === 0) return false;
   }
 
   return true;
@@ -274,13 +275,11 @@ function getCube(num) {
  *   10 => 55
  */
 function getFibonacciNumber(index) {
-  const arr = [0, 1];
-
-  for (let i = 2; i <= index; i += 1) {
-    arr.push(arr[i - 1] + arr[i - 2]);
-  }
-
-  return arr[index];
+  //! formula Binet // формула Бине
+  return Math.round(
+    (((1 + Math.sqrt(5)) / 2) ** index - ((1 - Math.sqrt(5)) / 2) ** index) /
+      Math.sqrt(5)
+  );
 }
 
 // ! 15
@@ -296,13 +295,8 @@ function getFibonacciNumber(index) {
  *   1  => 1
  */
 function getSumToN(n) {
-  let sum = 0;
-
-  for (let i = 1; i <= n; i += 1) {
-    sum += i;
-  }
-
-  return sum;
+  //! арифм прогрессия
+  return ((1 + n) * n) / 2;
 }
 
 // ! 16
@@ -342,14 +336,7 @@ function getSumOfDigits(num) {
  *   15  => false
  */
 function isPowerOfTwo(num) {
-  let remainder = num;
-
-  while (remainder > 1) {
-    if (remainder % 2 !== 0) return false;
-    remainder /= 2;
-  }
-
-  return true;
+  return Number.isInteger(Math.log2(num));
 }
 
 // ! 18
@@ -395,12 +382,8 @@ function numberToStringInBase(number, base) {
  * 12345, 2    => '1.23e+4'
  */
 function toExponential(number, fractionDigits) {
-  // throw new Error('Not implemented');
   return number.toExponential(fractionDigits);
 }
-// console.log(toExponential(12345, 2)); // '1.23e+4'
-// console.log(toExponential(-12345, 3)); // '-1.235e+4'
-// console.log(toExponential(12345, 1)); // '1.2e+4'
 
 // ! 21
 /**
