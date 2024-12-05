@@ -111,8 +111,8 @@ function getLinearEquationRoot(a, b) {
  *   (0,-1) (1,0)    => π/2
  *   (0,1) (0,1)     => 0
  */
+// formula from the Internet
 function getAngleBetweenVectors(x1, y1, x2, y2) {
-  // formula from the Internet
   const scalarMultiplication = x1 * x2 + y1 * y2;
 
   const firstModule = Math.sqrt(x1 ** 2 + y1 ** 2);
@@ -274,8 +274,8 @@ function getCube(num) {
  *   3  => 2
  *   10 => 55
  */
+//! formula Binet // формула Бине
 function getFibonacciNumber(index) {
-  //! formula Binet // формула Бине
   return Math.round(
     (((1 + Math.sqrt(5)) / 2) ** index - ((1 - Math.sqrt(5)) / 2) ** index) /
       Math.sqrt(5)
